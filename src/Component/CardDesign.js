@@ -5,10 +5,10 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DownloadIcon from '@mui/icons-material/Download';
 import React from 'react'
 import '../App.css';
+import MotionContainer from '../theme/animate/MotionContainer';
 
 export const CardDesign = ({ theme }) => {
-
-
+    
     const Colleges = [
         {
             name: "Anna University",
@@ -145,12 +145,13 @@ export const CardDesign = ({ theme }) => {
             {/* // ---------------------------DeskTop----------------------------------- */}
             <Stack
                 sx={{
+                    bgcolor: 'primary.lighter',
                     width: "100%",
                     display: { xl: "inline-flex", md: "inline-flex", xs: "none" },
                     justifyContent: "center",
                     alignItems: "center",
-                    my: 5,
-                    p: 0
+                    // my: 5,
+                    py: 5
                 }}
                 direction="column"
             >
@@ -167,7 +168,7 @@ export const CardDesign = ({ theme }) => {
                     {Colleges.map((e) => {
                         return (
                             <Grid item xl={3} lg={4} md={6} sm={6} xs={12}  >
-                                <Card sx={{ width: "351px", bgcolor: theme ? "grey.900" : 'white' }} className="main-card"  >
+                                <Card component={MotionContainer} sx={{ width: "351px", bgcolor: theme ? "grey.900" : 'primary.lighter', animation: 'ease-in' }} className="main-card"  >
                                     <ImageListItem sx={{ width: "351px" }} >
                                         <Card>
                                             <ImageListItemBar
@@ -203,12 +204,12 @@ export const CardDesign = ({ theme }) => {
 
                                                 sx={{ bgcolor: theme ? "rgba(2, 27, 27, 0.82)" : "white" }}
                                                 title={
-                                                    <Typography className='typo' variant='h6' color={theme ? "#0db999" : "common.black"} >{e.name}</Typography>
+                                                    <Typography className='typo' variant='h6' color={theme ? "primary.main" : "common.black"} >{e.name}</Typography>
                                                 }
 
                                                 subtitle={
                                                     <>
-                                                        <Typography className='typo' fontSize={13} color={theme ? "#0db999" : "common.black"} >{e.address.district},{e.address.state}</Typography>
+                                                        <Typography className='typo' fontSize={13} color={theme ? "primary.main" : "common.black"} >{e.address.district},{e.address.state}</Typography>
 
                                                         <Box className="box-hover"
                                                         // sx={{ display:{xs:"block"} }}
@@ -216,14 +217,14 @@ export const CardDesign = ({ theme }) => {
                                                         >
 
                                                             <Grid  >
-                                                                <Typography className='typo' variant="caption" color={theme ? "#0db999" : "common.black"} sx={{ '&:hover': { color: theme ? "black" : "white" } }}>{e.course}</Typography>
+                                                                <Typography className='typo' variant="caption" color={theme ? "primary.main" : "common.black"} sx={{ '&:hover': { color: theme ? "black" : "white" } }}>{e.course}</Typography>
                                                             </Grid>
 
                                                             <Grid item display={'flex'} sx={{ pt: 1 }}>
 
                                                                 <Grid sx={{ pr: '10px', textAlign: 'left' }}  >
 
-                                                                    <Button className='typo' variant='text' size='small' sx={{ fontSize: '13px', color: theme ? "#0db999" : "common.black" }}  >
+                                                                    <Button className='typo' variant='text' size='small' sx={{ fontSize: '13px', color: theme ? "primary.main" : "common.black" }}  >
                                                                         <SchoolOutlinedIcon sx={{ color: '#0db995', mr: 1 }} fontSize="medium" />
                                                                         Admission
                                                                     </Button>
@@ -306,10 +307,11 @@ export const CardDesign = ({ theme }) => {
             {/* // ---------------------------Mobile------------------------------------- */}
             <Stack
                 sx={{
+                    bgcolor: theme ? "dark" : "primary.lighter",
                     display: { xs: "-ms-flexbox", md: "none" },
                     justifyContent: "center",
                     alignItems: "center",
-                    p: 0
+                    py: 4
                 }}
                 direction="column"
             >
@@ -324,7 +326,7 @@ export const CardDesign = ({ theme }) => {
                     {Colleges.map((e) => {
                         return (
                             <Grid container item xs={12} mx={3} justifyContent='center' >
-                                <Card sx={{ width: 280, bgcolor: theme ? "grey.900" : 'white' }} className="main-card"  >
+                                <Card sx={{ width: 280, bgcolor: theme ? "grey.900" : 'primary.lighter' , boxShadow:'2px 2px 6px grey '}}   >
                                     <ImageListItem sx={{ width: 280 }} >
 
                                         <ImageListItemBar
@@ -340,7 +342,7 @@ export const CardDesign = ({ theme }) => {
                                             title={
                                                 <>
                                                     <Box className="gold-rating" sx={{ position: "absolute", height: 75, width: 80, ml: 26, mt: -3, justifyContent: "center", pt: 2, p: 1, pl: 1, borderRadius: " 0px 0px 0px 10px " }}>
-                                                        <Typography variant="body2" color="common.white" pt={1} >Rating</Typography>
+                                                        <Typography variant={ "body2" } color="common.white" pt={1} >Rating</Typography>
                                                         <Typography variant="h6" color="common.goldrod" fontWeight={'bold'} >{e.rate}/10</Typography>
                                                     </Box>
                                                 </>
@@ -380,14 +382,14 @@ export const CardDesign = ({ theme }) => {
                                                             <Grid sx={{ pr: '10px', textAlign: 'left' }}  >
 
                                                                 <Button variant='text' size='small' sx={{ fontSize: '11px', color: theme ? "white" : "common.black" }}  >
-                                                                    <SchoolOutlinedIcon sx={{ color: '#0db995', mr: 1 }} fontSize="small" />
+                                                                    <SchoolOutlinedIcon sx={{ color: "primary.main", mr: 1 }} fontSize="small" />
                                                                     Admission
                                                                 </Button>
                                                             </Grid>
 
                                                             <Grid >
                                                                 <Button variant='text' size='small' sx={{ fontSize: '11px', color: theme ? "white" : "common.black" }}>
-                                                                    <MenuBookOutlinedIcon sx={{ color: '#0db995', mr: 1 }} fontSize="small" />
+                                                                    <MenuBookOutlinedIcon sx={{ color: 'primary.main', mr: 1 }} fontSize="small" />
                                                                     Course&fees
                                                                 </Button>
                                                             </Grid>
@@ -418,7 +420,7 @@ export const CardDesign = ({ theme }) => {
                                                 sx={{
                                                     border: "2.5px solid #0db995",
                                                     '&:hover': { border: "2.5px solid #0db995", bgcolor: theme ? "#0db4" : '#0db995' },
-                                                    bgcolor: theme ? "gray.700" : '#0db995',
+                                                    bgcolor: theme ? "gray.700" : 'primary.main',
                                                     color: theme ? "#0db995" : "white",
                                                     width: '100px',
                                                     justifyContent: "space-between",
@@ -446,14 +448,11 @@ export const CardDesign = ({ theme }) => {
                                                 size="small"
                                             >
                                                 <DownloadIcon fontSize='small' />
-                                                Brochure
+                                                 Brochure
 
                                             </Button>
                                         </Stack>
                                     </CardActions>
-                                    {/* <Box sx={{ width:"100px" , height:"100px" }} >
-
-                                </Box> */}
 
                                 </Card>
                             </Grid>

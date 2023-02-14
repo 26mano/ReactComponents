@@ -9,15 +9,24 @@ import { CardDesign } from './Component/CardDesign';
 // import Carousel from './Component/Carousel';
 
 // -----------------------------------------------
-import { Paper, Switch } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import {  Paper , Switch} from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+
 import { useState } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
+// import ThemeProvider from './theme';
+import Button from './Component/comp/Buttons/Button';
+import OutlineButton from './Component/comp/Buttons/BrouchureButton';
+import { Stack } from '@mui/system';
+import ApplyButton from './Component/comp/Buttons/ApplyButton';
+import AdmissionButton from './Component/comp/Buttons/AdmissionButton';
+// import SettingMode from './Component/mode/SettingMode';
+// import {isLight} from './theme'
 
 
 
 
-function App() {
+function App({isLight}, props) {
   const [darkTheme, setDarkTheme] = useState(false);
 
   const theme = createTheme({
@@ -39,18 +48,26 @@ function App() {
       mode: darkTheme ? 'dark' : 'light'
     }
   })
+
   return (
 
 
     <>
-      <ThemeProvider theme={theme}  >
+      {/* <ThemeProvider theme={theme} > */}
+      <Stack justifyContent={'center'} alignItems='center' height={'100vh'} direction='column' >
         <CssBaseline />
-        <Paper>
-          <Switch checked={darkTheme} onChange={() => { setDarkTheme(!darkTheme) }} sx={{ position:"fixed"  , zIndex:5 }} />
-          <CardDesign theme={darkTheme} />
-          {/* <main >Hello </main> */}
+        <Paper sx={{ background:'paper' , justifyContent:"space-between" , display:"grid" }}>
+          <Button > Hello button </Button>
+          <OutlineButton >Outline</OutlineButton>
+          <ApplyButton sx={{ color:"" }} />
+          <AdmissionButton />
+
+          {/* <Switch checked={darkTheme} onChange={() => { setDarkTheme(!darkTheme) }} sx={{ position:"fixed"  , zIndex:5 }} /> */}
+          {/* <SettingMode /> */}
+          {/* <CardDesign /> */}
         </Paper>
-      </ThemeProvider>
+        </Stack>
+      {/* </ThemeProvider> */}
     </>
 
   );
